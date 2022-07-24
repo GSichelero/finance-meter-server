@@ -9,12 +9,10 @@ const yahooFinance = require('yahoo-finance2').default;
 var manage_data = require('./utils/manage_data');
 
 
+const connectionString = process.env.DATABASE_URL;
+
 const client = new Client({
-  user: process.env.USER,
-  host: process.env.HOST,
-  database: process.env.DATABASE,
-  password: process.env.PASSWORD,
-  port: process.env.PORT,
+    connectionString,
 })
 client.connect()
 
