@@ -10,11 +10,11 @@ var manage_data = require('./utils/manage_data');
 
 
 const client = new Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'financedb',
-  password: 'ggi2011',
-  port: 5432,
+  user: process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.PORT,
 })
 client.connect()
 

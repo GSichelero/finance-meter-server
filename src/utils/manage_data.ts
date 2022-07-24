@@ -5,11 +5,11 @@ var XLSX = require('node-xlsx');
 const yahooFinance = require('yahoo-finance2').default;
 
 const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'financedb',
-    password: 'ggi2011',
-    port: 5432,
+    user: process.env.USER,
+    host: process.env.HOST,
+    database: process.env.DATABASE,
+    password: process.env.PASSWORD,
+    port: process.env.PORT,
 })
 client.connect()
 
@@ -125,7 +125,7 @@ export async function getFinancialDividends() {
 export function getDatesInRange(startDate: Date, endDate: Date) {
     const date = new Date(startDate.getTime());
   
-    const dates = [];
+    const dates: any[] = [];
   
     while (date <= endDate) {
       dates.push(String(new Date(date)));
