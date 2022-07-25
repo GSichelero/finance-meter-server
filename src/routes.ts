@@ -90,7 +90,7 @@ routes.post('/upload-report-file', upload.array('reports'), async function(reque
             if (row[7] == '-') {
               row[7] = 0;
             }
-            row[5] = row[5].replace(',', '.');
+            row[5] = row[5].toString().replace(',', '.');
             await client.query('INSERT INTO finance_data (date, movement, product, quantity, unit_price, operation_value) VALUES ($1, $2, $3, $4, $5, $6)', [row[1], row[2], row[3], row[5], row[6], row[7]])
           }
         }
