@@ -1,4 +1,4 @@
-import express from 'express'
+const express = require('express');
 const bodyParser = require('body-parser');
 var googleFinance = require('google-finance');
 const { Client } = require('pg')
@@ -28,7 +28,7 @@ routes.use(express.urlencoded({limit: '50mb'}));
 
 // routes.use(routes.router)
 
-routes.get('/', (request, response) => {
+routes.get('/', (request: any, response: any) => {
   // select all rows from finance_data
   client.query('SELECT * FROM finance_data', (err: any, res: any) => {
     if (err) {
@@ -41,7 +41,7 @@ routes.get('/', (request, response) => {
 })
 
 
-routes.get('/stock/:name', async function(request, response) {
+routes.get('/stock/:name', async function(request: any, response: any) {
   let queryOptions = { period1: '2022-02-01', period2: '2022-03-01'};
   try {
     let quotes = await yahooFinance.historical(request.params.name, queryOptions);
@@ -52,12 +52,12 @@ routes.get('/stock/:name', async function(request, response) {
 })
 
 
-routes.get('/get-financial-data', async function(request, response) {
+routes.get('/get-financial-data', async function(request: any, response: any) {
   return response.json(manage_data.filterData(await manage_data.getFinancialData()));
 })
 
 
-routes.get('/get-financial-dividends', async function(request, response) {
+routes.get('/get-financial-dividends', async function(request: any, response: any) {
   return response.json(await manage_data.getFinancialDividends());
 })
 
@@ -188,8 +188,8 @@ routes.post('/transform-finance-data', async function(request: any, response: an
 })
 
 
-routes.post('/posts', (request, response) => {
+routes.post('/posts', (request: any, response: any) => {
   return response.json({ message: 'New post' })
 })
 
-export default routes
+module.exports = routes;
