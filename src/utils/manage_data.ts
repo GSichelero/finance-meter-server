@@ -415,5 +415,11 @@ export async function transformFinanceData(financeData: any, withDividends: bool
         });
     });
 
+    // loop through all elements in newDatesStored
+    for (let i = 0; i < newDatesStored.length; i++) {
+        // convert each element in newDatesStored to a String
+        newDatesStored[i] = String(new Date(String(newDatesStored[i])));
+    }
+
     return [newDatesStored, newData3];
 }
