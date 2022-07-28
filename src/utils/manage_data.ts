@@ -417,8 +417,8 @@ export async function transformFinanceData(financeData: any, withDividends: bool
 
     // loop through all elements in newDatesStored
     for (let i = 0; i < newDatesStored.length; i++) {
-        // convert each element in newDatesStored to a String
-        newDatesStored[i] = String(new Date(String(newDatesStored[i])));
+        // convert 'Brasilia Standard Time' to 'Horário Padrão de Brasília'
+        newDatesStored[i] = String(newDatesStored[i]).replace('Brasilia Standard Time', 'Horário Padrão de Brasília');
     }
 
     return [newDatesStored, newData3];
