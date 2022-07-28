@@ -415,17 +415,5 @@ export async function transformFinanceData(financeData: any, withDividends: bool
         });
     });
 
-    // loop through all elements in newDatesStored
-    for (let i = 0; i < newDatesStored.length; i++) {
-        // if newDatesStored[i].toString() contains the word 'Standart', delete it
-        if (newDatesStored[i].toString().includes('Standart')) {
-            newDatesStored.splice(i, 1);
-        }
-    }
-    // order newDatesStored by date
-    newDatesStored.sort((a: any, b: any) => {
-        return new Date(a).getTime() - new Date(b).getTime();
-    });
-
     return [newDatesStored, newData3];
 }
